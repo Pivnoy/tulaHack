@@ -23,9 +23,8 @@ public class BasicController {
 
     @GetMapping("/user")
     @ResponseBody
-    public ResponseEntity<String> getBasicAnswer(@RequestParam(name = "id") String id) {
-        String result = userService.getUserById(Long.parseLong(id)).toString();
-        return result == null ? ResponseEntity.ok("Govno") : ResponseEntity.ok(result);
+    public ResponseEntity<String> getBasicAnswer(@RequestParam(name = "login") String login) {
+        return ResponseEntity.ok(userService.getUserByLogin(login));
     }
 
 }

@@ -15,7 +15,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUserById(Long id) {
-        return userRepository.existsById(id) ? userRepository.getById(id) : null;
+    public String getUserByLogin(String login) {
+        return userRepository.existsByLogin(login) ? userRepository.getByLogin(login).toString() : "";
     }
 }
