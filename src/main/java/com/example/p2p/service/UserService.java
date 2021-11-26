@@ -18,4 +18,5 @@ public class UserService {
     public String getUserByLogin(String login) {
         return userRepository.existsByLogin(login) ? userRepository.getByLogin(login).toString() : "";
     }
+
 }

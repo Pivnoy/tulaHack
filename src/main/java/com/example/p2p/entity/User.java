@@ -25,7 +25,10 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "ip", nullable = false)
-    private String ip;
+    @Column(name = "public_key", nullable = false)
+    private String public_key;
+
+    @Column(name = "is_online", nullable = false)
+    private String is_online;
 
 }
