@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public void addNewUser(String login, String password){
-        userRepository.addNewUser(login, password);
+        userRepository.save(new User(login,password));
     }
 
 }

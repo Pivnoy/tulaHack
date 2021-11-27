@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -18,12 +17,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT new java.lang.Boolean(COUNT(*) > 0) FROM User u where u.login = ?1")
     Boolean existsByLogin(String login);
-
-    @Modifying
-    @Query(value = "INSERT into user (login, password) VALUES(:login, :password)", nativeQuery = true)
-    @Transactional
-    void addNewUser(@Param("login") String login,
-                    @Param("password") String password);
-
 
 }
