@@ -15,7 +15,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public String getUserByLogin(String login) {
-        return userRepository.existsByLogin(login) ? userRepository.getByLogin(login).toString() : "";
+    public User getUserByLogin(String login) {
+        return userRepository.existsByLogin(login) ? userRepository.getByLogin(login):null;
     }
 }
