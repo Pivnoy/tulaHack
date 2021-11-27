@@ -1,7 +1,44 @@
 
 .Chat {
-    border: 1px solid white;
-    
-    min-width: 400px;
+    position: relative;
+    border: 8px ridge #A42792;
+    padding: 4px;
+    height: 75vh;
+    width: 35vw;
+    min-width: 391px;
     min-height: 600px;
+
+    &-Header {
+        padding: 9px;
+        
+
+        &_conversationMode_dialog {
+            display: flex;
+        }
+
+        &_conversationMode {
+            border: 1px solid #1976d2;
+        }
+    }
+
+    &-Body {
+        margin-top: 10px;
+        max-height: calc(100% - 150px);
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    &-Message {
+        display: flex;
+        position: absolute;
+        width: 98%;
+        bottom: 6px;
+    }
+}
+
+@media (max-width: 600px) {
+    .Chat {
+        height: 95vh;
+        width: 95vw;
+    }
 }

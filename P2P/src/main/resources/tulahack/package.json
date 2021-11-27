@@ -22,6 +22,8 @@
     "js-crypto-rsa": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-initials-avatar": "^1.1.2",
+    "react-lettered-avatar": "^1.0.2",
     "react-redux": "^7.2.6",
     "react-scripts": "4.0.3",
     "sass": "^1.43.5",

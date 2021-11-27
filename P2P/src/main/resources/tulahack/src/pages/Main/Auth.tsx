@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from 'react';
-import { BackgroundStars } from '../../components/BackgroundStars/BackgroundStars';
+import React, { useCallback } from 'react';
 import { Header } from '../../components/Header/Header';
 import { useAppSelector  } from '../../hooks/hooks'
 import { SignIn } from '../../components/SignIn/SignIn';
@@ -10,7 +9,6 @@ import './Auth.scss';
 
 const cnAuth = cn('Auth');
 const authCn = cnAuth();
-const authHeaderCn = cnAuth('Header');
 const authBaseCn = cnAuth('Base');
 
 export const Auth = () => {

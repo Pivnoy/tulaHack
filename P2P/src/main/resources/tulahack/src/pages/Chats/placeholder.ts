@@ -70,6 +70,40 @@ export const placeholder: ChatType = [
                 from: 'Toha Pulya',
                 timeStamp: 1113,
                 content: 'Нет, тебе пизда, чмо' 
+            },
+            {
+                from: 'Toha Pulya',
+                timeStamp: 1111,
+                content: 'Здарова Кабан, иду ебать тебя' 
+            },
+
+            {
+                from: 'Borya',
+                timeStamp: 1112,
+                content: 'Тебе пизда' 
+            },
+
+            {
+                from: 'Toha Pulya',
+                timeStamp: 1113,
+                content: 'Нет, тебе пизда, чмо' 
+            },
+            {
+                from: 'Toha Pulya',
+                timeStamp: 1111,
+                content: 'Здарова Кабан, иду ебать тебя' 
+            },
+
+            {
+                from: 'Borya',
+                timeStamp: 1112,
+                content: 'Тебе пизда' 
+            },
+
+            {
+                from: 'Toha Pulya',
+                timeStamp: 1113,
+                content: 'Нет, тебе пизда, чмо' 
             }
         ]
     },

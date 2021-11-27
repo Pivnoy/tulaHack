@@ -16,11 +16,13 @@ export type dialog = {
 export type ChatType = dialog[] | null;
 
 type stateType = {
-    chats: ChatType
+    chats: ChatType,
+    pickedChat: number,
 }
 
 const state: stateType = {
-    chats: placeholder
+    chats: placeholder,
+    pickedChat: -1
 }
 
 export const ChatsSlice = createSlice({
@@ -31,9 +33,13 @@ export const ChatsSlice = createSlice({
     setChats: (state, action) => {
       state.chats = action.payload
     },
+
+    setPickedChat: (state, action) => {
+      state.pickedChat = action.payload;
+    }
   },
 })
 
-export const { setChats } = ChatsSlice.actions;
+export const { setChats, setPickedChat } = ChatsSlice.actions;
 
 export default ChatsSlice.reducer;

@@ -1,9 +1,17 @@
 
+.MainAlert {
+    position: fixed;
+    z-index: 100000;
+    left: auto;
+    left: 5%;
+    top: 20px;
+    width: 90%;
+}
+
 .Container {
     display: flex;
     justify-content: center;
     align-items: center;
 
     width: 100vw;
-    height: 100vh;
 }
