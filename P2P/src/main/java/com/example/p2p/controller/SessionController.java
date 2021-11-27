@@ -46,7 +46,7 @@ public class SessionController {
         if (SessionService.getSessionService().checkUser(login)) {
             return ResponseEntity.ok(SessionService.getSessionService().getPublicKey(login));
         }
-        return ResponseEntity.ok("");
+        return null;
     }
 
     //end session
