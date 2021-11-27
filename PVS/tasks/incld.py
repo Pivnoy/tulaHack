@@ -2,8 +2,8 @@ import re
 from os import listdir
 from os.path import isfile, join
 
-lib_path = '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/'
-
+lib_path = '/usr/include/'
+lib_spec = '/usr/lib/gcc/x86_64-linux-gnu/8/include/'
 
 def get_header_content(filename: str):
     print(filename)
@@ -14,6 +14,7 @@ def get_header_content(filename: str):
 
 def use_include(text: str):
     std_lib = [f for f in listdir(lib_path) if isfile(join(lib_path, f))]
+    std_lib_spec = [f for f in listdir(lib_spec) if isfile(join(lib_spec, f))]
     filenames = []
     content = []
     includes = re.findall(r'#include\s*.\w*\.h.', text)
@@ -23,6 +24,9 @@ def use_include(text: str):
     for fn in filenames:
         if fn in std_lib:
             content.append(use_include(get_header_content(lib_path + fn)))
+        elif fn in std_lib_spec:
+            print(lib_spec + fn)
+            content.append(use_include(get_header_content(lib_spec + fn)))
         else:
             content.append(use_include(get_header_content(fn)))
     for inc in range(0, len(includes)):

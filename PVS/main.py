@@ -1,10 +1,10 @@
 from sys import platform
 
 
-import PVS.tasks.grph as gr
-import PVS.tasks.comments as cm
-import PVS.tasks.incld as inc
-import PVS.tasks.werr as w
+import tasks.grph as gr
+import tasks.comments as cm
+import tasks.incld as inc
+import tasks.werr as w
 
 operating_system = ''
 language_lib_c_path = ''
