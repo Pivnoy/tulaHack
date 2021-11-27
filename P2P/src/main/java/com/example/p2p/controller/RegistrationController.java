@@ -26,4 +26,10 @@ public class RegistrationController {
         userService.addNewUser(login, String.valueOf(password.hashCode()));
         return ResponseEntity.ok(Boolean.TRUE);
     }
+
+    @GetMapping("/check_login")
+    @ResponseBody
+    public ResponseEntity<Boolean> checkLogin(@RequestParam(name = "login") String login) {
+        return ResponseEntity.ok(userService.existsByLogin(login));
+    }
 }
