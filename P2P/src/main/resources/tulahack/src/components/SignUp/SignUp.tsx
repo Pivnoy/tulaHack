@@ -7,6 +7,8 @@ import './SignUp.scss';
 const cnSignUp = cn('SignUp');
 const signUpCn = cnSignUp();
 
+const fontColor = {style: {color: 'white'}};
+
 export const SignUp: React.FC = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
@@ -33,7 +35,8 @@ export const SignUp: React.FC = () => {
 
     return (
         <div className={signUpCn}>
-            <TextField 
+            <TextField
+                inputProps={fontColor}
                 onChange={(e) => setLogin(e.target.value)}
                 label="Login"
                 variant="filled"
@@ -41,6 +44,7 @@ export const SignUp: React.FC = () => {
                 focused 
             />
             <TextField
+                inputProps={fontColor}
                 onChange={(e) => setPassword(e.target.value)}
                 label="Password"
                 variant="filled"
@@ -49,6 +53,7 @@ export const SignUp: React.FC = () => {
                 focused 
             />
             <TextField 
+                inputProps={fontColor}
                 onChange={(e) => setRepPassword(e.target.value)}
                 label={checkPassword() ? "RepeatPassword" : 'Not the same'}
                 variant="filled"
