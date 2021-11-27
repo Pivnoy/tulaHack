@@ -1,13 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { placeholder } from './placeholder';
 
-export type ChatType = '';
+export type message = {
+	from: string,
+	timeStamp: number,
+	content: string
+}
+
+export type dialog = {
+	login: string,
+	conversation: message[],
+	lastMessageTime: number,
+}
+
+export type ChatType = dialog[] | null;
 
 type stateType = {
     chats: ChatType
 }
 
 const state: stateType = {
-    chats: ''
+    chats: placeholder
 }
 
 export const ChatsSlice = createSlice({
