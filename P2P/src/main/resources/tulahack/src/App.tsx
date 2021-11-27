@@ -4,6 +4,8 @@ import { Chat } from './pages/Chats/Chat';
 import { BackgroundStars } from './components/BackgroundStars/BackgroundStars';
 import { useAppSelector } from './hooks/hooks';
 
+import './App.scss';
+
 const PAGES = {
 	auth: <Auth />,
 	chat: <Chat />
@@ -12,15 +14,14 @@ const PAGES = {
 function App() {
 	const { page } = useAppSelector(state => state.page);
 
-	const renderPage = useCallback(() => {
-	}, [])
-
 	return (
-			<div>
-				<BackgroundStars />
+		<>
+			<BackgroundStars />
+			<div className="Container">
 				{PAGES[page]}
-			</div>	
-		)
+			</div>
+		</>	
+	)
 }
 
 export default App;

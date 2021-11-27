@@ -5,5 +5,5 @@ type keyPair = {
 }
 
 export const generateRSA = (seed: string): keyPair => {
-    return {public: 'a', private: 'b' };
+    return { public: 'a', private: 'b' };
 }
