@@ -4,8 +4,8 @@ import { Chat } from './pages/Chats/Chat';
 import { BackgroundStars } from './components/BackgroundStars/BackgroundStars';
 import { useAppSelector } from './hooks/hooks';
 
-import './App.scss';
 
+import './App.scss';
 const PAGES = {
 	auth: <Auth />,
 	chat: <Chat />

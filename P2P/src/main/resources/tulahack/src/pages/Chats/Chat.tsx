@@ -51,7 +51,6 @@ export const Chat = () => {
 
         return (
             <div className={chatMessageCn}>
-                
             </div>
         )
     }, [])
