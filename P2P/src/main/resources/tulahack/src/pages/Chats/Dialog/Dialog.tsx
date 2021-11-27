@@ -1,40 +1,51 @@
 import React, { useCallback } from 'react';
 import { IClassNameProps } from '@bem-react/core';
+import { cn } from '@bem-react/classname';
 import { dialog } from '../ChatSlice';
 import { Message } from '../Message/Message';
 import type { message } from '../ChatSlice';
+import { useAppSelector } from '../../../hooks/hooks';
+
+import './Dialog.scss';
 
 interface DialogProps extends IClassNameProps {
-    big?: boolean,
-    dialog: dialog
+    onClick: (i: number) => void,
+    conversationMode?: boolean,
+    dialog: dialog,
+    _id: number,
 }
 
+const cnDialog = cn('Dialog');
+const dialogCn = cnDialog();
+
 export const Dialog: React.FC<DialogProps> = (props) => {
-    const { big = false, dialog} = props;
+    const { conversationMode = false, dialog, onClick, _id} = props;
 
     const renderFull = useCallback(() => {
-        const sortedMessages = dialog.conversation.sort((a, b) => a.timeStamp - b.timeStamp)
+        // const sortedMessages = dialog.conversation.sort((a, b) => a.timeStamp - b.timeStamp)
+        const sortedMessages = dialog.conversation;
         return (
             <div>
-                {sortedMessages.map(el => <Message content={el} />)}
+                {sortedMessages.map(el => <Message toWhom={dialog.login} content={el} />)}
             </div>
         )
-    }, [dialog.conversation])
+    }, [dialog.conversation, dialog.login])
 
     const renderFirst = useCallback(() => {
         const lastMessage = dialog.conversation.find(el => el.timeStamp === dialog.lastMessageTime) as message;
 
         return (
-            <Message content={lastMessage}/>        
+            <Message onClick={() => onClick(_id)} toWhom={dialog.login} preview content={lastMessage}/>        
         )
-    }, [dialog])
+    }, [dialog, _id, onClick])
 
     const renderDialog = useCallback(() => {
-        return big ? renderFull() : renderFirst();
-    }, [big, renderFirst, renderFull]);
+        console.log(conversationMode);
+        return conversationMode ? renderFull() : renderFirst();
+    }, [conversationMode, renderFirst, renderFull]);
 
     return (
-        <div>
+        <div className={dialogCn}>
             {renderDialog()}
         </div>
     )

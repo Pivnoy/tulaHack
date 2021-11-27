@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export type BaseType = 'Info' | 'SignUp' | 'SignIn';
 
 type stateType = {
-    base: BaseType
+    base: BaseType,
+    login: string,
 }
 
 const state: stateType = {
-    base: 'Info'
+    base: 'Info',
+    login: 'Toha Pulya'
 }
 
 export const AuthSlice = createSlice({
@@ -18,9 +20,13 @@ export const AuthSlice = createSlice({
     setBase: (state, action) => {
       state.base = action.payload
     },
+
+    setLogin: (state, action) => {
+      state.login = action.payload
+    }
   },
 })
 
-export const { setBase } = AuthSlice.actions;
+export const { setBase, setLogin } = AuthSlice.actions;
 
 export default AuthSlice.reducer;
