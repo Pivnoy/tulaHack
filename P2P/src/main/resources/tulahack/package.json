@@ -18,6 +18,7 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.24.0",
     "cryptico-js": "^1.1.0",
+    "js-crypto-rsa": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
