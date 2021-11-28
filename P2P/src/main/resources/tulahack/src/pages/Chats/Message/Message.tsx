@@ -42,8 +42,8 @@ export const Message: React.FC<MessageProps> = (props) => {
                     <div onClick={() => onClick && onClick()} className={cnMessage('Author', {preview})}>
                         <Text m>{toWhom}</Text>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <Text s>{content.content}</Text>
-                            <Text s>{new Date(content.timeStamp).toLocaleTimeString("en-US")}</Text>
+                            <Text s>{content?.content}</Text>
+                            <Text s>{new Date(content?.timeStamp).toLocaleTimeString("en-US")}</Text>
                         </div>
                     </div>
                 </div>

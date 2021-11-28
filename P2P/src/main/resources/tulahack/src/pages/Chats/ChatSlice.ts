@@ -21,14 +21,14 @@ export type client = {
 }
 
 type stateType = {
-    chats: ChatType,
+    chats: ChatType | null,
     pickedChat: number,
     conversationMode: boolean,
     currentClient: client | null,
 }
 
 const state: stateType = {
-    chats: placeholder,
+    chats: null,
     pickedChat: -1,
     conversationMode: false,
     currentClient: null
