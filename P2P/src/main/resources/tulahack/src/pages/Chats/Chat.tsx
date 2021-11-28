@@ -47,7 +47,7 @@ export const Chat = () => {
         setStompClient(stmClient)
         stmClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            stmClient.subscribe(`${baseUrl}/receive/${login}`, function (greeting) {
+            stmClient.subscribe(`${baseUrl}receive/${login}`, function (greeting) {
                 console.log(greeting);
             });
         });
