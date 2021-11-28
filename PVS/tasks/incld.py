@@ -35,6 +35,14 @@ def include_std_lib_files(text: str, path: str):
     std_lib = [f for f in listdir(lib_path) if isfile(join(lib_path, f))]
     std_lib_spec = [f for f in listdir(lib_spec) if isfile(join(lib_spec, f))]
     std_lib_bits = [f for f in listdir(lib_bits) if isfile(join(lib_bits, f))]
+    lib_files = re.findall(r'#include\s*<\w*\.h>', text)
+    for i in lib_files:
+        name = re.findall(r'\w*\.h', i)
+        print(lib_path)
+        if name[0] in std_lib:
+            text = text.replace(i, get_header_content(lib_path + name[0]))
+        if name[0] in std_lib_spec:
+            text = text.replace(i, get_header_content(lib_spec + name[0]))
     return text
 
 
