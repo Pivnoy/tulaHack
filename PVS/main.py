@@ -1,10 +1,10 @@
 from sys import platform
 
-
 import tasks.grph as gr
 import tasks.comments as cm
 import tasks.incld as inc
 import tasks.werr as w
+import tasks.line as lines
 
 operating_system = ''
 language_lib_c_path = ''
@@ -23,22 +23,13 @@ def platform_parameters():
         operating_system = 'Windows'
 
 
+with open('val.c', 'r') as file:
+    file_inside = file.read().strip()
 
-# print(get_standart_lib_files('/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include'))
-#
-# platform_parameters()
-# print(operating_system)
-#
-# # param - source codes of libc and libc++
-#
-global data
+print(file_inside)
 
-with open('val.c', 'r') as f:
-    # data = f.read().strip().replace('\n', ' ').split(' ')
-    data = f.read().strip()
-
-print(data)
-dt = cm.delete_c_comments(data)
+dt = lines.substitute_line(file_inside)
+dt = cm.delete_c_comments(dt)
 dt = gr.tr_transform_impl(dt)
 dt = inc.use_include(dt)
 dt = w.warnings(dt)
