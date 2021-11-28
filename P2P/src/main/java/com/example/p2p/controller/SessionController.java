@@ -30,10 +30,11 @@ public class SessionController {
 
         if (!userService.existsByLogin(login)
                 || !userService.getUserByLogin(login).getPassword().equals(String.valueOf(password.hashCode()))) {
-            SessionService.getSessionService().addUser(login, public_key);
             /* All work with w-sockets here */
             return ResponseEntity.ok((new JSONObject()).put("status", "fail").put("message", "User with this credentials not found").toString());
         }
+
+        SessionService.getSessionService().addUser(login, public_key);
         return ResponseEntity.ok((new JSONObject()).put("status", "ok").toString());
     }
 
@@ -45,7 +46,7 @@ public class SessionController {
         System.out.println("status: " + login);
 
         if (!SessionService.getSessionService().checkUser(login)) {
-            return ResponseEntity.ok((new JSONObject()).put("status", "fail").toString());
+            return ResponseEntity.ok((new JSONObject()).put("status", "fail").put("message", "User is offline").toString());
         }
         return ResponseEntity.ok((new JSONObject()).put("status", "ok")
                 .put("pubKey", SessionService.getSessionService().getPublicKey(login)).toString());
