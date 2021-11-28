@@ -878,11 +878,16 @@ __END_DECLS
 
 
 
+int mnozh(double);
+
+void print(void * ptr)
+
+
+
 int sum(int a, int b);
 
-#line 10
 
 int main() {
-13
+6
     return 0;
 }

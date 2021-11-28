@@ -2,7 +2,6 @@
 
 #include "val.h"
 
-#line 10
 
 int main() {
 __LINE__
