@@ -81,12 +81,12 @@
      <path d="m339.14 907.66-35.956 71.723" stroke-width="2" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
      <circle transform="matrix(1.3999 0 0 1.3999 113.8 -488.74)" cx="179.93" cy="1009.3" r="2.1466"/>
     </g>
-    <circle transform="translate(6.9018 4.7684)" cx="332.24" cy="902.89" r="6.6856" fill="#4d4d4d" stroke-width="2"/>
+    <circle transform="translate(6.9018 4.7684)" cx="332.24" cy="902.89" r="6.6856" fill="#333333" stroke-width="2"/>
    </g>
    <text x="309.57858" y="1011.2506" fill="#000000" font-family="monospace" font-size="26.667px" letter-spacing="0px" stroke-width=".73635" text-anchor="middle" word-spacing="0px" style="line-height:1.25" inkscape:label="Centralized Label" xml:space="preserve"><tspan x="309.57858" y="1011.2506" sodipodi:role="line">CENTRALIZED</tspan></text>
   </g>
   <g transform="translate(17.781)" inkscape:label="Decentralized">
-   <g transform="rotate(90 514.61 932.26)" stroke="#000" inkscape:label="Decentralized Network">
+   <g transform="rotate(90 514.61 932.26)" stroke="#0c3260" inkscape:label="Decentralized Network">
     <path d="m406.94 970.02 31.742-18.859" fill="none" stroke-width="1.5" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
     <path d="m408.52 912.02 29.722 38.854" fill="none" stroke-width="1.5" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
     <g>
@@ -117,7 +117,7 @@
      <circle transform="matrix(1.3999 0 0 1.3999 258.76 -488.74)" cx="179.93" cy="1009.3" r="2.1466"/>
     </g>
     <g stroke-width="1.5">
-     <path d="m484.1 907.66 51.811-3.8366" fill="#00f" inkscape:connector-curvature="0"/>
+     <path d="m484.1 907.66 51.811-3.8366" fill="##0c3260" inkscape:connector-curvature="0"/>
      <path d="m522.77 797.43-23.321 16.256" fill="#00f" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
      <path d="m534.52 961.11-13.428 21.627-16.426 15.354" fill="none" inkscape:connector-curvature="0"/>
     </g>

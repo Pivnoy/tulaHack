@@ -22,17 +22,16 @@ export const Dialog: React.FC<DialogProps> = (props) => {
     const { conversationMode = false, dialog, onClick, _id} = props;
 
     const renderFull = useCallback(() => {
-        // const sortedMessages = dialog.conversation.sort((a, b) => a.timeStamp - b.timeStamp)
-        const sortedMessages = dialog.conversation;
+        const sortedMessages = dialog?.conversation;
         return (
             <div>
-                {sortedMessages.map(el => <Message toWhom={dialog.login} content={el} />)}
+                {sortedMessages?.map(el => <Message toWhom={dialog.login} content={el} />)}
             </div>
         )
-    }, [dialog.conversation, dialog.login])
+    }, [dialog?.conversation, dialog?.login])
 
     const renderFirst = useCallback(() => {
-        const lastMessage = dialog.conversation.find(el => el.timeStamp === dialog.lastMessageTime) as message;
+        const lastMessage = dialog?.conversation?.find(el => el.timeStamp === dialog.lastMessageTime) as message;
 
         return (
             <Message onClick={() => onClick(_id)} toWhom={dialog.login} preview content={lastMessage}/>        
@@ -40,7 +39,6 @@ export const Dialog: React.FC<DialogProps> = (props) => {
     }, [dialog, _id, onClick])
 
     const renderDialog = useCallback(() => {
-        console.log(conversationMode);
         return conversationMode ? renderFull() : renderFirst();
     }, [conversationMode, renderFirst, renderFull]);
 

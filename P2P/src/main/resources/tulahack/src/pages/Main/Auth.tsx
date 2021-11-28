@@ -27,10 +27,10 @@ export const Auth = () => {
         return (
             <div style={{color: 'white'}}>
                 <img 
-                    src="../img/Decentralization_diagram.svg" 
-                    alt="how it works" 
-                    height="87"
-                    width="100"
+                    src="Decentralization_diagram.svg" 
+                    alt="how it works..."
+                    height="1000"
+                    width="1400"
                 />
                 {/* <DecSvg /> */}
             </div>

@@ -22,8 +22,6 @@ export const Message: React.FC<MessageProps> = (props) => {
     const { content, preview = false, toWhom, onClick } = props;
     const { login } = useAppSelector(state => state.base);
 
-    console.log(content);
-
     const formatName = (toWhom: string) => {
         if (!toWhom.includes(' ')) {
             return toWhom.slice(0,2).split('').join(' ');
@@ -33,6 +31,10 @@ export const Message: React.FC<MessageProps> = (props) => {
     }
 
     const renderMessage = useCallback(() => {
+        if (!toWhom) {
+            return;
+        }
+        
         if (preview) {
             return (
                 <div className={cnMessage({preview})} >
@@ -60,7 +62,7 @@ export const Message: React.FC<MessageProps> = (props) => {
                 </div>
             </div>
         )
-    }, [preview, content.content, toWhom, content.timeStamp, onClick, content.from, login]);
+    }, [preview, toWhom, onClick, login, content]);
 
     return (
         <div>
