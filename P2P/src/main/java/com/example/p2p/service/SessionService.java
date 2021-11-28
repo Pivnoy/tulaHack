@@ -19,8 +19,8 @@ public class SessionService {
         return instance;
     }
 
-    public void addUser(String login, String password) {
-        userMap.put(login,password);
+    public void addUser(String login, String public_key) {
+        userMap.put(login, public_key);
     }
 
     public Boolean checkUser(String login) {

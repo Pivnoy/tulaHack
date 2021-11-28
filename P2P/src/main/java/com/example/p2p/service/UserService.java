@@ -16,6 +16,15 @@ public class UserService {
     }
 
     public User getUserByLogin(String login) {
-        return userRepository.existsByLogin(login) ? userRepository.getByLogin(login):null;
+        return userRepository.existsByLogin(login) ? userRepository.getByLogin(login) : null;
     }
+
+    public Boolean existsByLogin(String login) {
+        return userRepository.existsByLogin(login);
+    }
+
+    public void addNewUser(String login, String password){
+        userRepository.save(new User(login,password));
+    }
+
 }
