@@ -30,6 +30,7 @@ export const Chat = () => {
     const { pickedChat } = useAppSelector(state => state.chats);
     const [stompClient, setStompClient] = useState<Stomp.Client>();
     const [messageToSend, setMessageToSend] = useState('');
+    const [whomLogin, setWhomLogin] = useState('');
     const { currentClient } = useAppSelector(state => state.chats);
 
     const showAlertMesage = useShowAlertMessage();
@@ -43,11 +44,11 @@ export const Chat = () => {
         //@ts-ignore
         let socket = new SockJS(`${baseUrl}gs-guide-websocket`);
         stmClient = Stomp.over(socket);
+        setStompClient(stmClient)
         stmClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
             stmClient.subscribe(`/receive/${login}`, function (greeting) {
                 console.log(greeting);
-                setStompClient(stmClient)
             });
         });
         }
@@ -55,9 +56,10 @@ export const Chat = () => {
     }, [login])
 
     const tryToTalk = useCallback(() => {
-        axios(`${baseUrl}status`, { params: { login: currentClient }})
+        axios(`${baseUrl}status`, { params: { login: whomLogin }})
         .then(response => {
             if (response.data.status === 'ok') {
+                dispatch(setCurrentClient({ login: whomLogin, publickKey: response.data.pubKey }));
                 if (chats) {
                     const chatIndex = chats.findIndex(chat => chat.login === currentClient?.login);
                     if (chatIndex >= 0) {
@@ -77,7 +79,7 @@ export const Chat = () => {
                 showAlertMesage(response.data.message);
             }
         })
-    }, [chats, dispatch, showAlertMesage, currentClient]);
+    }, [chats, dispatch, showAlertMesage, currentClient, whomLogin]);
 
     const renderChatHeader = useCallback(() => {
         if (conversationMode) {
@@ -94,7 +96,7 @@ export const Chat = () => {
                     fullWidth
                     label="Talk to"
                     inputProps={fontColor}
-                    onChange={(e) => dispatch(setCurrentClient((e.target.value)))}
+                    onChange={(e) => setWhomLogin(e.target.value)}
                     variant="filled"
                     color="info"
                     focused 
@@ -128,15 +130,19 @@ export const Chat = () => {
         )
     }, [chats, conversationMode, dispatch, pickedChat])
 
-    const sendMessage = () => {
+    const sendMessage = useCallback(() => {
+        console.log('currectClient', currentClient, 'msg', messageToSend);
+
         if (!currentClient || messageToSend.length < 1) {
             return;
         }
-        encryptMsg(messageToSend, JSON.parse(currentClient.publicKey))
+        console.log('here');
+        //@ts-ignore
+        encryptMsg(messageToSend, JSON.parse(localStorage.getItem('publicKey')))
         .then(encMsg => {
             stompClient?.send(`${baseUrl}/app/chat`, {}, JSON.stringify({data: encMsg, sender: login, receiver: currentClient.login}));
         });
-    }
+    }, [currentClient, login, messageToSend, stompClient])
 
     const renderChatMessage = useCallback(() => {
         
@@ -155,7 +161,7 @@ export const Chat = () => {
                 <Button onClick={sendMessage} style={{marginLeft: '5px'}} variant="outlined" startIcon={<ForwardIcon /> }/>
             </div>
         )
-    }, [])
+    }, [sendMessage])
 
     return (
         <div className={chatCn}>
