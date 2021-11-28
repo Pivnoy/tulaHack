@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Controller
 public class MessageController {
-
-
     private SimpMessagingTemplate messagingTemplate;
 
     @Autowired
