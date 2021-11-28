@@ -1,4 +1,5 @@
 from sys import platform
+import argparse
 
 import tasks.grph as gr
 import tasks.comments as cm
@@ -8,7 +9,6 @@ import tasks.line as lines
 
 operating_system = ''
 language_lib_c_path = ''
-language_lib_cpp_path = ''
 
 
 def platform_parameters():
@@ -23,7 +23,14 @@ def platform_parameters():
         operating_system = 'Windows'
 
 
-with open('val.c', 'r') as file:
+parser = argparse.ArgumentParser()
+parser.add_argument("--f")
+parser.add_argument("--libc", default='/usr')
+args = parser.parse_args()
+filename = args.f
+libc_path = args.libc
+
+with open(filename, 'r') as file:
     file_inside = file.read().strip()
 
 print(file_inside)
@@ -31,9 +38,9 @@ print(file_inside)
 dt = lines.substitute_line(file_inside)
 dt = cm.delete_c_comments(dt)
 dt = gr.tr_transform_impl(dt)
-dt = inc.use_include(dt)
+dt = inc.include_std_lib_files(dt, libc_path)
 dt = w.warnings(dt)
 print(dt)
 
-with open('gg.c', 'w') as fn:
-    fn.write(dt)
+with open('output.c', 'w') as output_file:
+    output_file.write(dt)
