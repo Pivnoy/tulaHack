@@ -47,7 +47,7 @@ export const Chat = () => {
         setStompClient(stmClient)
         stmClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            stmClient.subscribe(`${baseUrl}receive/${login}`, function (greeting) {
+            stmClient.subscribe(`receive/${login}`, function (greeting) {
                 console.log(greeting);
             });
         });
@@ -139,7 +139,8 @@ export const Chat = () => {
         //@ts-ignore
         encryptMsg(messageToSend, JSON.parse(localStorage.getItem('publicKey')))
         .then(encMsg => {
-            stompClient?.send(`${baseUrl}app/chat`, {}, JSON.stringify({data: encMsg, sender: login, receiver: currentClient.login}));
+            console.log('currectClient', currentClient, 'msg', encMsg);
+            stompClient?.send(`/app/chat`, {}, JSON.stringify({data: messageToSend, sender: login, receiver: currentClient.login}));
         });
     }, [currentClient, login, messageToSend, stompClient])
 
