@@ -5,7 +5,7 @@ type KeyPair = {
     privKey: JsonWebKey
 }
 
-export const generateRSA = async (seed: string): Promise<KeyPair> => {
+export const generateRSA = async (): Promise<KeyPair> => {
     return rsa.generateKey(2048).then( (key) => {
         return {pubKey: key.publicKey, privKey: key.privateKey};
     });

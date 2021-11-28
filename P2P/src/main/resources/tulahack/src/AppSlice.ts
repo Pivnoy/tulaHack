@@ -10,7 +10,7 @@ type stateType = {
 }
 
 const state: stateType = {
-    page: 'chat',
+    page: 'auth',
     showAlert: false,
     alertText: 'Вы пидорас ебучий'
 }
